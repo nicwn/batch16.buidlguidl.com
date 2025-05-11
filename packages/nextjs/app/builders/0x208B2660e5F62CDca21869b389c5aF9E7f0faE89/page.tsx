@@ -74,7 +74,7 @@ const GwillPage: NextPage = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl border-2 border-gray-300 bg-gray-100 p-6 rounded-lg">
           <div className="stats shadow">
             <div className="stat">
               <div className="stat-title">Favorite Stack</div>
