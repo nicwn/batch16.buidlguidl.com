@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
   },
   images: {
     domains: ["avatars.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+    ],
   },
   webpack: config => {
     config.resolve.fallback = { fs: false, net: false, tls: false };
