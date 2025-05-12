@@ -25,6 +25,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
+  // Deploy BatchRegistry first
   await deploy("BatchRegistry", {
     from: deployer,
     // Contract constructor arguments
@@ -37,8 +38,22 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
 
   // Get the deployed contract to interact with it after deploying.
   const batchRegistry = await hre.ethers.getContract<Contract>("BatchRegistry", deployer);
-  console.log("\nBatchRegistry deployed to:", await batchRegistry.getAddress());
+  const batchRegistryAddress = await batchRegistry.getAddress();
+  console.log("\nBatchRegistry deployed to:", batchRegistryAddress);
+  console.log("Owner set to:", deployer);
   console.log("Remember to update the allow list!\n");
+
+  // Deploy CheckIn contract with BatchRegistry address
+  await deploy("CheckIn", {
+    from: deployer,
+    args: [batchRegistryAddress],
+    log: true,
+    autoMine: true,
+  });
+
+  // Get the deployed CheckIn contract
+  const checkIn = await hre.ethers.getContract<Contract>("CheckIn", deployer);
+  console.log("CheckIn contract deployed to:", await checkIn.getAddress(), "\n");
 
   // The GraduationNFT contract is deployed on the BatchRegistry constructor.
   const batchGraduationNFTAddress = await batchRegistry.batchGraduationNFT();
@@ -49,4 +64,4 @@ export default deployYourContract;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
-deployYourContract.tags = ["BatchRegistry"];
+deployYourContract.tags = ["BatchRegistry", "CheckIn"];
