@@ -1,20 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AddressCopyIcon } from "../../../components/scaffold-eth/Address/AddressCopyIcon";
 import type { NextPage } from "next";
-import { ClipboardDocumentIcon, CodeBracketIcon, UserCircleIcon } from "@heroicons/react/24/outline";
+import { CodeBracketIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 
 const MRWICKSProfile: NextPage = () => {
-  const walletAddress = "0xB24023434c3670E100068C925A87fE8F500d909a"; // Replace with your actual 0x address
-  const [copied, setCopied] = useState(false);
+  const walletAddress = "0xB24023434c3670E100068C925A87fE8F500d909a";
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(walletAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const socialLinks = [
+    { href: "https://x.com/mrrwiicks", label: "X", icon: CodeBracketIcon },
+    { href: "https://github.com/mrwicks00", label: "GitHub", icon: CodeBracketIcon },
+    { href: "https://discord.com/users/987567935503597578", label: "Discord", icon: UserCircleIcon },
+  ];
 
   return (
     <div className="min-h-screen bg-base-100 px-4 pt-16 pb-12">
@@ -47,22 +46,8 @@ const MRWICKSProfile: NextPage = () => {
             <h2 className="text-xl font-semibold text-primary-content mb-2">Wallet</h2>
             <div className="flex items-center gap-2 bg-base-200 p-4 rounded-xl">
               <span className="text-primary-content font-mono text-sm truncate max-w-xs">{walletAddress}</span>
-              <button
-                onClick={copyToClipboard}
-                className="btn btn-ghost btn-sm p-1 hover:bg-primary/20"
-                title="Copy Address"
-              >
-                <ClipboardDocumentIcon className="h-6 w-6 text-primary" />
-              </button>
+              <AddressCopyIcon address={walletAddress} className="h-6 w-6 text-primary" />
             </div>
-
-            {copied && (
-              <div className="toast toast-center toast-top">
-                <div className="alert alert-success bg-success text-success-content">
-                  <span>Address copied!</span>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Skills */}
@@ -72,7 +57,7 @@ const MRWICKSProfile: NextPage = () => {
               {["Smart Contracts", "Node.js", "React", "Next.js", "Starknet Cairo"].map(skill => (
                 <div
                   key={skill}
-                  className="bg-primary text-primary-content px-4 py-2 rounded-lg text-sm font-medium transform transition-transform hover:scale-105 hover:bg-primary/90"
+                  className="bg-primary text-primary-content px-4 py-2 rounded-lg text-sm font-medium transform transition-transform"
                 >
                   {skill}
                 </div>
@@ -84,30 +69,17 @@ const MRWICKSProfile: NextPage = () => {
           <div className="w-full">
             <h2 className="text-xl font-semibold text-primary-content mb-2">Connect with the Wizard</h2>
             <div className="flex flex-col gap-4 bg-base-200 p-4 rounded-xl">
-              <Link
-                href="https://x.com/mrrwiicks"
-                target="_blank"
-                className="flex items-center gap-3 text-primary text-lg font-medium hover:text-primary/80 transform transition-transform hover:scale-105"
-              >
-                <CodeBracketIcon className="h-7 w-7" />
-                <span>X</span>
-              </Link>
-              <Link
-                href="https://github.com/mrwicks00"
-                target="_blank"
-                className="flex items-center gap-3 text-primary text-lg font-medium hover:text-primary/80 transform transition-transform hover:scale-105"
-              >
-                <CodeBracketIcon className="h-7 w-7" />
-                <span>GitHub</span>
-              </Link>
-              <Link
-                href="https://discord.com/users/987567935503597578"
-                target="_blank"
-                className="flex items-center gap-3 text-primary text-lg font-medium hover:text-primary/80 transform transition-transform hover:scale-105"
-              >
-                <UserCircleIcon className="h-7 w-7" />
-                <span>Discord</span>
-              </Link>
+              {socialLinks.map(({ href, label, icon: Icon }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  className="flex items-center gap-3 text-primary-content text-lg font-medium hover:text-primary-content/80 transform transition-transform hover:scale-105 hover:bg-primary/10"
+                >
+                  <Icon className="h-7 w-7" />
+                  <span>{label}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -115,11 +87,11 @@ const MRWICKSProfile: NextPage = () => {
 
       <div className="max-w-6xl mx-auto mt-12 text-center">
         <p className="text-primary-content text-lg">
-          Hungry for more of my blockchain wizardry? Check out the{" "}
-          <Link href="/" className="link text-primary hover:text-primary/80">
+          Want to team up for some coding fun? Check out the{" "}
+          <Link href="/" className="link text-primary-content hover:text-primary-content/80">
             Batch 16 Builders
           </Link>{" "}
-          or summon me on Discord for legendary code quests!
+          or ping me on Discord!
         </p>
       </div>
     </div>
