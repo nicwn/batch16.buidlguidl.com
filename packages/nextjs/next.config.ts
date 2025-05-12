@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   devIndicators: false,
   images: {
-    domains: ["res.cloudinary.com", "cdn-icons-png.flaticon.com", "pbs.twimg.com"],
+    domains: ["res.cloudinary.com"],
   },
   typescript: {
     ignoreBuildErrors: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",

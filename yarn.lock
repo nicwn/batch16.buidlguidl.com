@@ -4023,6 +4023,7 @@ __metadata:
     eslint-config-prettier: ^10.1.1
     eslint-plugin-prettier: ^5.2.4
     kubo-rpc-client: ^5.0.2
+    lucide-react: ^0.510.0
     next: ^15.2.3
     next-nprogress-bar: ^2.3.13
     next-themes: ^0.3.0
@@ -16657,7 +16658,6 @@ __metadata:
   dependencies:
     husky: ^9.1.6
     lint-staged: ^15.2.10
-    lucide-react: ^0.510.0
   languageName: unknown
   linkType: soft
 
