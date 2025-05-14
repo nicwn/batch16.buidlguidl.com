@@ -16,10 +16,6 @@ import generateTsAbis from "./scripts/generateTsAbis";
 // You can generate a random account with `yarn generate` or `yarn account:import` to import your existing PK
 const deployerPrivateKey =
   process.env.__RUNTIME_DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
-
-// Your burner wallet's private key - replace this with your actual private key from browser local storage
-const burnerWalletPrivateKey = "0x15f6981afbea7a5603bc3bda05560ad370b331d16996ccea70410faff89ac21b";
-
 // If not set, it uses our block explorers default API keys.
 const etherscanApiKey = process.env.ETHERSCAN_MAINNET_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
 const etherscanOptimisticApiKey = process.env.ETHERSCAN_OPTIMISTIC_API_KEY || "RM62RDISS1RH448ZY379NX625ASG1N633R";
@@ -48,8 +44,7 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
-      // default: 0,
-      localhost: "0x5b275eb100a73E682c55C96fc55BB423C455eD25",
+      default: 0,
     },
   },
   networks: {
@@ -60,10 +55,6 @@ const config: HardhatUserConfig = {
         url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
-    },
-    localhost: {
-      url: "http://127.0.0.1:8545",
-      accounts: [burnerWalletPrivateKey],
     },
     mainnet: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
