@@ -70,10 +70,10 @@ const GwillPage: NextPage = () => {
                   <div className="stat-value text-primary text-2xl">NextJS + Solidity</div>
                 </div>
               </div>
-              <div className="stats bg-base-100 shadow-lg border border-secondary/10">
+              <div className="stats bg-base-100 shadow-lg border border-primary/10">
                 <div className="stat">
                   <div className="stat-title font-semibold">Current Focus</div>
-                  <div className="stat-value text-secondary text-2xl">DeFi + Startup Funding</div>
+                  <div className="stat-value text-primary text-2xl">DeFi + Startup Funding</div>
                 </div>
               </div>
             </div>
