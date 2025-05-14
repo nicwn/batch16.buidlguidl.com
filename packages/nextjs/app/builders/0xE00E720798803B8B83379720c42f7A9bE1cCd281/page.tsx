@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { ExternalLink, Github, Twitter } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import type { NextPage } from "next";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 import { Address } from "~~/components/scaffold-eth";
 
 const name = "Joe Leo";
@@ -15,13 +16,13 @@ const socialLinks = [
   {
     platform: "github",
     url: "https://github.com/web-ghost-dotcom",
-    icon: <Github size={20} />,
+    icon: <FaGithub size={20} />,
     color: "hover:text-purple-500",
   },
   {
     platform: "BuidlGuidl",
     url: "https://app.buidlguidl.com/builders/0xE00E720798803B8B83379720c42f7A9bE1cCd281",
-    icon: <Twitter size={20} />,
+    icon: <FaTwitter size={20} />,
     color: "hover:text-blue-400",
   },
 ];
