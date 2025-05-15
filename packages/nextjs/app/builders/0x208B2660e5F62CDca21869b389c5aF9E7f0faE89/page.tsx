@@ -64,16 +64,18 @@ const GwillPage: NextPage = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full border-2 border-primary/20 bg-base-200 p-6 rounded-lg">
-              <div className="stats bg-base-100 shadow-lg border border-primary/10">
-                <div className="stat">
+              <div className="stats bg-base-100 shadow-lg border border-primary/10 overflow-hidden">
+                <div className="stat p-4">
                   <div className="stat-title font-semibold">Favorite Stack</div>
-                  <div className="stat-value text-primary text-2xl">NextJS + Solidity</div>
+                  <div className="stat-value text-primary text-lg sm:text-xl md:text-2xl">NextJS + Solidity</div>
                 </div>
               </div>
-              <div className="stats bg-base-100 shadow-lg border border-primary/10">
-                <div className="stat">
+              <div className="stats bg-base-100 shadow-lg border border-primary/10 overflow-hidden">
+                <div className="stat p-4">
                   <div className="stat-title font-semibold">Current Focus</div>
-                  <div className="stat-value text-primary text-2xl">DeFi + Startup Funding</div>
+                  <div className="stat-value text-primary text-lg sm:text-xl md:text-2xl whitespace-normal break-words">
+                    DeFi + Startup Funding
+                  </div>
                 </div>
               </div>
             </div>
