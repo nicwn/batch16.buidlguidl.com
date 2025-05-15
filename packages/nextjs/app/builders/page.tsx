@@ -36,6 +36,10 @@ const BuilderDetailsRow = ({
 
   const hasGraduated = useMemo(() => graduatedTokenId && Number(graduatedTokenId) > 0, [graduatedTokenId]);
 
+  const hasProfile = useMemo(() => {
+    return existingProfiles.includes(builderAddress);
+  }, [builderAddress, existingProfiles]);
+
   useEffect(() => {
     const fetchBlockTimestamp = async () => {
       if (!publicClient || blockNumber === undefined) {
@@ -88,7 +92,7 @@ const BuilderDetailsRow = ({
           </div>
         </div>
 
-        {existingProfiles.includes(builderAddress) && (
+        {hasProfile && (
           <div className="card-actions justify-start pt-2">
             <Link
               href={`/builders/${builderAddress}`}
@@ -159,20 +163,32 @@ const BuildersList: NextPage = () => {
   }, [checkedInEvents]);
 
   const [profilesList, setProfilesList] = useState<string[]>([]);
+  const [isLoadingProfiles, setIsLoadingProfiles] = useState(true);
+  const [profilesError, setProfilesError] = useState<string | null>(null);
 
   useEffect(() => {
-    // This approach uses dynamic ES module imports (properly async)
-    const loadProfiles = async () => {
+    // Fetch builder profiles from the API route
+    const fetchProfiles = async () => {
       try {
-        const profilesModule = await import("~~/generated/existingBuilderProfiles");
-        setProfilesList(profilesModule.existingBuilderProfiles || []);
-      } catch {
-        console.log("No generated profile list found yet. Using empty list for profile links.");
-        // profilesList remains an empty array
+        setIsLoadingProfiles(true);
+        setProfilesError(null);
+        const response = await fetch("/api/builders/profiles");
+
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setProfilesList(data.profiles || []);
+      } catch (error) {
+        console.error("Failed to fetch existing profiles:", error);
+        setProfilesError("Could not load profile data. Profile links may be unavailable.");
+      } finally {
+        setIsLoadingProfiles(false);
       }
     };
 
-    loadProfiles();
+    fetchProfiles();
   }, []);
 
   return (
@@ -183,15 +199,19 @@ const BuildersList: NextPage = () => {
         <p className="text-lg text-base-content/70 dark:text-base-content/60 mt-2">
           Total Checked In: {checkedInCounter === undefined ? "..." : (checkedInCounter?.toString() ?? "0")}
         </p>
+
+        {profilesError && (
+          <div className="mt-2 text-sm text-warning">
+            <span>{profilesError}</span>
+          </div>
+        )}
       </div>
 
       <div className="max-w-3xl mx-auto">
-        {isLoadingEvents && (
+        {(isLoadingEvents || isLoadingProfiles) && (
           <div className="text-center py-10">
             <span className="loading loading-lg loading-spinner text-primary"></span>
-            <p className="mt-4 text-lg text-base-content/70 dark:text-base-content/60">
-              Loading checked-in builders...
-            </p>
+            <p className="mt-4 text-lg text-base-content/70 dark:text-base-content/60">Loading builders data...</p>
           </div>
         )}
         {errorEvents && (
@@ -199,7 +219,7 @@ const BuildersList: NextPage = () => {
             <span className="text-error-content">Error loading events. (Message: {errorEvents.message})</span>
           </div>
         )}
-        {!isLoadingEvents && !errorEvents && (
+        {!isLoadingEvents && !isLoadingProfiles && !errorEvents && (
           <div className="grid grid-cols-1 gap-6">
             {buildersWithFirstCheckInBlock.length === 0 ? (
               <div className="card bg-base-100 shadow-md border border-base-300/50 dark:border-base-300/30">
