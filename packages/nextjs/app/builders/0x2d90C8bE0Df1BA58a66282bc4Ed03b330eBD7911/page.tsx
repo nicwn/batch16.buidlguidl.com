@@ -157,8 +157,7 @@ const JosephOchiaghaProfile: NextPage = () => {
     return null;
   }
 
-  const isDarkMode = theme === "dark";
-
+  // Theme is used dynamically in the useEffect for DOM styling
   return (
     <main className="flex-grow relative">
       {/* Content container */}
@@ -217,13 +216,9 @@ const JosephOchiaghaProfile: NextPage = () => {
 
                   <div className="mt-2 flex items-center justify-center relative z-50">
                     <div className="py-1 px-2 rounded-lg bg-blue-500 dark:bg-blue-900/40 z-20 relative shadow-sm border border-blue-200 dark:border-blue-800">
-                      {isDarkMode ? (
+                      <div className="text-white dark:text-blue-100">
                         <Address address="0x2d90C8bE0Df1BA58a66282bc4Ed03b330eBD7911" format="short" size="sm" />
-                      ) : (
-                        <div className="flex items-center justify-center">
-                          <span className="text-sm font-medium text-white">0x2d90...7911</span>
-                        </div>
-                      )}
+                      </div>
                     </div>
                   </div>
 
