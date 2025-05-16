@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/dxswouxj5/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
     ],
   },
   webpack: config => {
