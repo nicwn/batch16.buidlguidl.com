@@ -34,7 +34,7 @@ const NnennaOkoyePage: NextPage = () => {
         <div className="flex flex-col items-center animate-fadeIn">
           <div className="flex justify-center mb-8">
             <div className="relative w-32 h-32 overflow-hidden border-4 border-secondary shadow-xl rounded-full">
-              <Image src="/NnennaAvatar.jpg" alt="Nnenna Avatar" className="bg-cover" fill />
+              <Image src="/NnennaAvatar.jpg" alt="Nnenna Avatar" fill sizes="128px" priority style={{ objectFit: "cover", objectPosition: "center 18%" }} />
             </div>
           </div>
 
