@@ -1,15 +1,11 @@
 "use client";
 
-// Import the theme hook
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
 import { IconType } from "react-icons";
 import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 import { Address } from "~~/components/scaffold-eth";
-
-// Import useState for theme detection
 
 // Skills array
 const skills: string[] = [
@@ -53,21 +49,7 @@ const socialLinks: SocialLink[] = [
 ];
 
 const JosephOchiaghaProfile: NextPage = () => {
-  // We don't need theme variable anymore since we're using Tailwind's dark mode classes
-  const [mounted, setMounted] = useState(false);
-
-  // Wait for component to mount to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Only render the component on the client side
-  // Return an empty div during initial server rendering
-  if (!mounted) {
-    return <div className="min-h-screen" />; // Minimal placeholder during SSR
-  }
-
-  // Component renders only on client side, avoiding hydration mismatches
+  // Using Tailwind's dark mode classes for theme handling
   return (
     <main className="flex-grow relative bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-800 dark:to-gray-900">
       {/* Content container */}
@@ -157,7 +139,7 @@ const JosephOchiaghaProfile: NextPage = () => {
                         className="px-3 py-1 text-sm rounded-full 
                                 bg-blue-50 text-blue-700 border border-blue-100 
                                 dark:bg-gray-700 dark:text-blue-300 dark:border-gray-600 
-                                transition-all duration-300 hover:bg-blue-100 dark:hover:bg-gray-600"
+                                transition-all duration-300"
                       >
                         {skill}
                       </span>
