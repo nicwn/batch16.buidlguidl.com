@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
-import { useTheme } from "next-themes";
 import { IconType } from "react-icons";
 import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiX } from "react-icons/si";
@@ -54,112 +53,23 @@ const socialLinks: SocialLink[] = [
 ];
 
 const JosephOchiaghaProfile: NextPage = () => {
-  const { theme } = useTheme();
+  // We don't need theme variable anymore since we're using Tailwind's dark mode classes
   const [mounted, setMounted] = useState(false);
 
-  // Wait for component to mount to access theme and apply theme styling
+  // Wait for component to mount to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
+  }, []);
 
-    // Let the component render first
-    setTimeout(() => {
-      // Use a more targeted approach that preserves text content
-      if (theme === "dark") {
-        // Dark mode - set the main content background with rich blue tones
-        const mainElement = document.querySelector("main.flex-1") as HTMLElement;
-        if (mainElement) {
-          // Dark gradient with subtle blue undertones
-          mainElement.style.setProperty(
-            "background",
-            "linear-gradient(135deg, #0f172a, #111827, #0c0f1a)",
-            "important",
-          );
-        }
-
-        // Specifically ensure the footer is visible and styled appropriately
-        const footer =
-          document.querySelector("footer") || (document.querySelector(".min-h-0.py-5.px-1") as HTMLElement);
-        if (footer) {
-          // Make the footer background dark
-          footer.style.setProperty("background-color", "#111827", "important");
-          footer.style.setProperty("color", "#9ca3af", "important");
-          footer.style.setProperty("display", "block", "important");
-          footer.style.setProperty("visibility", "visible", "important");
-          footer.style.setProperty("z-index", "50", "important");
-        }
-
-        // Ensure all footer links and text are visible
-        document.querySelectorAll("footer a, footer span, footer p, .menu-horizontal a").forEach(el => {
-          const element = el as HTMLElement;
-          element.style.setProperty("color", "#9ca3af", "important");
-          element.style.setProperty("opacity", "1", "important");
-          element.style.setProperty("visibility", "visible", "important");
-
-          // Keep original display property to maintain layout
-          element.style.removeProperty("display");
-        });
-
-        // Fix alignment for menu items
-        document.querySelectorAll(".menu.menu-horizontal .flex.justify-center").forEach(el => {
-          const element = el as HTMLElement;
-          element.style.setProperty("display", "flex", "important");
-          element.style.setProperty("justify-content", "center", "important");
-          element.style.setProperty("align-items", "center", "important");
-        });
-      } else {
-        // Light mode - set only the main content background with an enhanced gradient
-        const mainElement = document.querySelector("main.flex-1") as HTMLElement;
-        if (mainElement) {
-          // Soft blue gradient that feels clean and professional
-          mainElement.style.setProperty(
-            "background",
-            "linear-gradient(135deg, #e0f2ff, #f0f8ff, #e6f0ff)",
-            "important",
-          );
-        }
-
-        // Specifically ensure the footer is visible and styled appropriately
-        const footer =
-          document.querySelector("footer") || (document.querySelector(".min-h-0.py-5.px-1") as HTMLElement);
-        if (footer) {
-          // Keep the footer white to differentiate from the light blue main content
-          footer.style.setProperty("background-color", "white", "important");
-          footer.style.setProperty("color", "#4b5563", "important");
-          footer.style.setProperty("display", "block", "important");
-          footer.style.setProperty("visibility", "visible", "important");
-          footer.style.setProperty("z-index", "50", "important");
-        }
-
-        // Ensure all footer links and text are visible
-        document.querySelectorAll("footer a, footer span, footer p, .menu-horizontal a").forEach(el => {
-          const element = el as HTMLElement;
-          element.style.setProperty("color", "#4b5563", "important");
-          element.style.setProperty("opacity", "1", "important");
-          element.style.setProperty("visibility", "visible", "important");
-
-          // Keep original display property to maintain layout
-          element.style.removeProperty("display");
-        });
-
-        // Fix alignment for menu items
-        document.querySelectorAll(".menu.menu-horizontal .flex.justify-center").forEach(el => {
-          const element = el as HTMLElement;
-          element.style.setProperty("display", "flex", "important");
-          element.style.setProperty("justify-content", "center", "important");
-          element.style.setProperty("align-items", "center", "important");
-        });
-      }
-    }, 100); // Small delay to ensure the DOM is ready
-  }, [theme]);
-
-  // Avoid hydration mismatch
+  // Only render the component on the client side
+  // Return an empty div during initial server rendering
   if (!mounted) {
-    return null;
+    return <div className="min-h-screen" />; // Minimal placeholder during SSR
   }
 
-  // Theme is used dynamically in the useEffect for DOM styling
+  // Component renders only on client side, avoiding hydration mismatches
   return (
-    <main className="flex-grow relative">
+    <main className="flex-grow relative bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-800 dark:to-gray-900">
       {/* Content container */}
       <div className="relative flex items-center justify-center min-h-screen w-full py-16 px-4 overflow-hidden">
         {/* Card container with improved shadows and borders */}
