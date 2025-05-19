@@ -36,7 +36,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# Auto-generated files
-/generated/existingBuilderProfiles.ts
-
 ipfs-upload.config.json
