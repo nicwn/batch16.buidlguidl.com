@@ -7,8 +7,13 @@
  * It should be run during the build process.
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get current file directory in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Define paths
 const buildersDir = path.join(__dirname, '..', 'app', 'builders');
@@ -36,11 +41,6 @@ function isValidBuilderProfile(dirName) {
 
     // Check if directory contains a page component
     const dirPath = path.join(buildersDir, dirName);
-    const isDir = fs.statSync(dirPath).isDirectory();
-
-    if (!isDir) {
-        return false;
-    }
 
     return (
         fs.existsSync(path.join(dirPath, 'page.tsx')) ||
@@ -50,7 +50,7 @@ function isValidBuilderProfile(dirName) {
 
 // Scan for builder profiles (directories in the builders folder that contain pages)
 const builderProfiles = fs.readdirSync(buildersDir, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory() && dirent.name !== 'components')
+    .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
     .filter(isValidBuilderProfile);
 
@@ -66,10 +66,9 @@ if (!fs.existsSync(apiRoutePath)) {
 let routeContent = fs.readFileSync(apiRoutePath, 'utf8');
 
 // Replace the BUILDER_PROFILES array content
-const newArray = JSON.stringify(builderProfiles, null, 2);
 routeContent = routeContent.replace(
     /const BUILDER_PROFILES = \[([\s\S]*?)\];/,
-    `const BUILDER_PROFILES = ${newArray};`
+    `const BUILDER_PROFILES = ${JSON.stringify(builderProfiles, null, 2)};`
 );
 
 // Write the updated content back to the file
