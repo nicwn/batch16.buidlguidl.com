@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { NextPage } from "next";
 import { IconType } from "react-icons";
@@ -49,7 +47,6 @@ const socialLinks: SocialLink[] = [
 ];
 
 const JosephOchiaghaProfile: NextPage = () => {
-  // Using Tailwind's dark mode classes for theme handling
   return (
     <main className="flex-grow relative bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-800 dark:to-gray-900">
       {/* Content container */}
