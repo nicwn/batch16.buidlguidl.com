@@ -16,7 +16,7 @@ interface BuilderProfileProps {
 const BuilderProfile = ({ name, avatarUrl, bio, ethAddress, skills, hobbies }: BuilderProfileProps) => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <div className="card bg-white backdrop-blur-sm border border-purple-100/20 shadow-lg"></div>
+      <div className="card bg-primary-content backdrop-blur-sm border border-purple-100/20 shadow-lg"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-purple-100/30 -z-10" />
 
       <div className="flex flex-col items-center space-y-4 pt-8 pb-6">
