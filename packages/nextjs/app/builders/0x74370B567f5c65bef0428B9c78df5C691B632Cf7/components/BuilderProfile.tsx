@@ -27,7 +27,7 @@ const BuilderProfile = ({ name, avatarUrl, bio, ethAddress, skills, hobbies }: B
         </div>
         <div className="text-center items-center">
           <h1 className="text-3xl font-bold text-primary-content">{name}</h1>
-          <div className="flex justify-center">
+          <div className="flex justify-center text-primary-content">
             <Address address={ethAddress} />
           </div>
         </div>
