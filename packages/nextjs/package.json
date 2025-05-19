@@ -3,18 +3,18 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "node scripts/update-builder-profiles.js && next build",
+    "build": "node scripts/update-builder-profiles.mjs && next build",
     "check-types": "tsc --noEmit --incremental",
-    "dev": "next dev",
+    "dev": "node scripts/update-builder-profiles.mjs && next dev",
     "format": "prettier --write . '!(node_modules|.next|contracts)/**/*'",
     "lint": "next lint",
     "serve": "next start",
-    "start": "next dev",
+    "start": "node scripts/update-builder-profiles.mjs && next dev",
     "vercel": "vercel --build-env YARN_ENABLE_IMMUTABLE_INSTALLS=false --build-env ENABLE_EXPERIMENTAL_COREPACK=1 --build-env VERCEL_TELEMETRY_DISABLED=1",
     "vercel:yolo": "vercel --build-env YARN_ENABLE_IMMUTABLE_INSTALLS=false --build-env ENABLE_EXPERIMENTAL_COREPACK=1 --build-env NEXT_PUBLIC_IGNORE_BUILD_ERROR=true --build-env VERCEL_TELEMETRY_DISABLED=1",
     "ipfs": "NEXT_PUBLIC_IPFS_BUILD=true yarn build && yarn bgipfs upload config init -u https://upload.bgipfs.com && CID=$(yarn bgipfs upload out | grep -o 'CID: [^ ]*' | cut -d' ' -f2) && [ ! -z \"$CID\" ] && echo '🚀 Upload complete! Your site is now available at: https://community.bgipfs.com/ipfs/'$CID || echo '❌ Upload failed'",
     "vercel:login": "vercel login",
-    "update-profiles": "node scripts/update-builder-profiles.js"
+    "update-profiles": "yarn workspace @se-2/nextjs update-profiles"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
@@ -29,7 +29,7 @@
     "lucide-react": "^0.510.0",
     "next": "^15.2.3",
     "next-nprogress-bar": "^2.3.13",
-"next-themes": "^0.3.0",
+    "next-themes": "^0.3.0",
     "qrcode.react": "^4.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
