@@ -33,7 +33,7 @@ const socialLinks = [
   },
 ];
 
-const ProfilePage: NextPage = () => {
+const NicwnProfilePage: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
@@ -139,4 +139,4 @@ const ProfilePage: NextPage = () => {
   );
 };
 
-export default ProfilePage;
+export default NicwnProfilePage;
