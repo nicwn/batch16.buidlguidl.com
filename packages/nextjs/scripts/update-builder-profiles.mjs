@@ -68,7 +68,7 @@ let routeContent = fs.readFileSync(apiRoutePath, 'utf8');
 // Replace the BUILDER_PROFILES array content
 routeContent = routeContent.replace(
     /const BUILDER_PROFILES = \[([\s\S]*?)\];/,
-    `const BUILDER_PROFILES = ${JSON.stringify(builderProfiles, null, 2)};`
+    `const BUILDER_PROFILES = [\n  ${builderProfiles.map(profile => `"${profile}"`).join(",\n  ")},\n];`
 );
 
 // Write the updated content back to the file
