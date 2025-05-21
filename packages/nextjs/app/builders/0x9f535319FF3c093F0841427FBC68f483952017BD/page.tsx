@@ -1,11 +1,9 @@
-"use client";
-
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Address } from "~~/components/scaffold-eth";
 
-const BuilderProfilePage: FC = () => {
+const KodedProfile: FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-950 text-gray-900 dark:text-white">
       {/* Main content */}
@@ -215,4 +213,4 @@ const BuilderProfilePage: FC = () => {
   );
 };
 
-export default BuilderProfilePage;
+export default KodedProfile;
