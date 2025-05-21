@@ -9,7 +9,7 @@ const KodedProfile: NextPage = () => {
       {/* Main content */}
       <div className="flex-grow container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Profile Image and info */}
+          {/* Profile Image and info*/}
           <div className="w-full md:w-1/3 flex flex-col items-center md:items-start">
             <div className="relative h-64 w-64 rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600">
               <Image
@@ -77,7 +77,7 @@ const KodedProfile: NextPage = () => {
             </div>
           </div>
 
-          {/* Introduction*/}
+          {/*Introductions*/}
           <div className="w-full md:w-2/3 rounded-lg p-6 bg-white dark:bg-gray-900 shadow-md dark:shadow-none">
             <h2 className="text-2xl font-semibold mb-4">Hi there 👋 I am Korede Abidoye</h2>
             <h3 className="text-xl font-semibold">A Blockchain Developer</h3>
