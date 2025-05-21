@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { Address } from "~~/components/scaffold-eth";
 
-const WalletAddress = "0x391b638EB7d21B122Be2Ed69eb81DA7E0F168177";
+const walletAddress = "0x391b638EB7d21B122Be2Ed69eb81DA7E0F168177";
 const socialLinks = [
   {
     href: "https://github.com/Ebukamoses",
@@ -20,7 +20,7 @@ const socialLinks = [
 const EbukaMosesProfile: NextPage = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-base-200 to-base-300 px-4 sm:px-8 py-4 sm:py-8">
-      <div className="max-w-[400px] w-full bg-gradient-to-r from-gray-[#f5f5f5] via-white to-[#e6e6e6] dark:from-base-100 dark:via-base-200 dark:to-base-100 shadow-md rounded-2xl p-4 sm:p-10 border border-gray-100 dark:border-accent hover:shadow-gray-200/20 transition-all duration-300">
+      <div className="max-w-[400px] w-full bg-gradient-to-r from-gray-[#f5f5f5] via-white to-[#e6e6e6] dark:from-base-100 dark:via-base-200 dark:to-base-100 shadow-md rounded-2xl p-4 sm:p-10 border border-gray-100 dark:border-accent">
         <div className="flex flex-col items-center gap-4 sm:gap-6">
           {/* Avatar */}
           <div className="relative group">
@@ -52,14 +52,14 @@ const EbukaMosesProfile: NextPage = () => {
           {/* Address container */}
           <div className="flex items-center w-full sm:w-auto bg-base-200 dark:bg-base-300 px-2 sm:px-4 py-2 rounded-xl border border-base-300 dark:border-accent text-xs sm:text-base">
             <div>
-              <Address address={WalletAddress} format="short" />
+              <Address address={walletAddress} format="short" />
             </div>
           </div>
           <hr className="h-[2px] w-full" />
           {/* Social links */}
           <div className="flex flex-col gap-4 w-full sm:w-auto">
             <h2 className="text-center font-bold">Let&apos;s Connect</h2>
-            <div className="flex items-center gap-2 sm:gap-4">
+            <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-4">
               {socialLinks.map(({ href, label, icon }) => (
                 <a
                   key={href}
