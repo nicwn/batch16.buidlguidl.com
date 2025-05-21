@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
   },
   images: {
-    domains: ["i.imgur.com"],
+    domains: ["avatars.githubusercontent.com", "i.imgur.com"],
+
     remotePatterns: [
       {
         protocol: "https",
@@ -25,6 +26,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
     ],
   },
