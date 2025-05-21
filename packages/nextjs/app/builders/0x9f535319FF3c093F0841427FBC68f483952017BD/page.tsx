@@ -1,9 +1,9 @@
-import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { NextPage } from "next";
 import { Address } from "~~/components/scaffold-eth";
 
-const KodedProfile: FC = () => {
+const KodedProfile: NextPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-950 text-gray-900 dark:text-white">
       {/* Main content */}
