@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
 import { useTheme } from "next-themes";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { SiBluesky } from "react-icons/si";
 import { Address } from "~~/components/scaffold-eth";
 
@@ -34,26 +33,15 @@ const socialLinks = [
 ];
 
 const NicwnProfilePage: NextPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === "dark";
-
-  useEffect(() => {
-    setIsVisible(true);
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 font-sans">
       <div
         className={`w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-md shadow-secondary ${
           isDarkMode ? "bg-base-100" : "bg-white"
-        } transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"} transition-all duration-700`}
+        }`}
       >
         {/* Header with pattern */}
         <div className="relative">
@@ -81,7 +69,7 @@ const NicwnProfilePage: NextPage = () => {
             </div>
           </div>
         </div>
-
+        
         {/* Content */}
         <div className="pt-20 px-8 pb-8">
           <div className="text-center mb-8">
@@ -92,8 +80,7 @@ const NicwnProfilePage: NextPage = () => {
               </span>
             </div>
             <p className="text-lg mb-6 max-w-xs mx-auto">
-              I am Nick Wang. My claim to fame was the creation LEGO Ideas, I moved from NYC to Tokyo and led a small
-              team to make fan created LEGO sets a reality.
+              I am Nick Wang. My claim to fame was the creation LEGO Ideas, where I moved from NYC to Tokyo and led a small team to make fan created LEGO sets a reality.
             </p>
 
             {/* Address display */}
