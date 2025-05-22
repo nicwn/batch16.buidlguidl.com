@@ -45,8 +45,8 @@ const NicwnProfilePage: NextPage = () => {
 
           {/* Avatar */}
           <div className="absolute left-0 right-0 -bottom-16 flex justify-center">
-            <div className="p-1 bg-[#F79E02] rounded-full shadow-md shadow-secondary group">
-              <div className="p-1 bg-[#55BAB7] rounded-full overflow-hidden transform transition-all duration-300 group-hover:scale-105">
+            <div className="p-1 bg-[#F79E02] rounded-full shadow-md shadow-secondary">
+              <div className="p-1 bg-[#55BAB7] rounded-full overflow-hidden">
                 <div className="w-32 h-32 relative">
                   <Image
                     src="/nickavatar.png.avif"
