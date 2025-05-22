@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { NextPage } from "next";
-import { useTheme } from "next-themes";
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { SiBluesky } from "react-icons/si";
 import { Address } from "~~/components/scaffold-eth";
@@ -33,16 +32,9 @@ const socialLinks = [
 ];
 
 const NicwnProfilePage: NextPage = () => {
-  const { resolvedTheme } = useTheme();
-  const isDarkMode = resolvedTheme === "dark";
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4 font-sans">
-      <div
-        className={`w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-md shadow-secondary ${
-          isDarkMode ? "bg-base-100" : "bg-white"
-        }`}
-      >
+      <div className="w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-md shadow-secondary bg-white dark:bg-base-100">
         {/* Header with pattern */}
         <div className="relative">
           <div className="h-36 bg-[#5DA2D5] overflow-hidden relative">
