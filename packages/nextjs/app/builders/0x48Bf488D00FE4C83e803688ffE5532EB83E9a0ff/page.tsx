@@ -49,7 +49,7 @@ const NicwnProfilePage: NextPage = () => {
               <div className="p-1 bg-[#55BAB7] rounded-full overflow-hidden">
                 <div className="w-32 h-32 relative">
                   <Image
-                    src="/nickavatar.png.avif"
+                    src="/nickavatar.avif"
                     alt="Nicholas Wang"
                     fill
                     sizes="(max-width: 128px) 100vw, 128px"
