@@ -29,7 +29,8 @@ const EbukaMosesProfile: NextPage = () => {
                 src="/EbukaDvAvatar2.png"
                 alt="my picture"
                 fill
-                // priority
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="w-full h-full object-cover p-1 rounded-lg"
               />
             </div>
