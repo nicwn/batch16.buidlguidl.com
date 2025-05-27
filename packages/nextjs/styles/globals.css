@@ -119,3 +119,171 @@
 .link:hover {
   opacity: 80%;
 }
+
+
+/* home page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Add animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 8s ease infinite;
+}
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Hero background with overlay and grid effect */
+.bg-hero {
+  background-image: url("https://res.cloudinary.com/dxswouxj5/image/upload/v1747934020/illustration-abstract-glowing-neon-light-effects-great-futuristic-background_ahr7zj.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Light/Dark adaptive overlay */
+.bg-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 0;
+}
+
+/* Light mode specific overlay adjustment */
+@media (prefers-color-scheme: light) {
+  .bg-hero::after {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8));
+  }
+}
+
+[data-theme="light"] .bg-hero::after {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8));
+}
+
+/* Subtle glow effect */
+.bg-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 183, 255, 0.2), transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+/* Lightning effects have been moved to lightning.css */
+@import url('./lightning.css');
+
+/* Shadow glow effects for light and dark mode */
+.shadow-glow-sm {
+  box-shadow: 0 0 10px rgba(147, 187, 251, 0.2);
+}
+
+.shadow-glow-md {
+  box-shadow: 0 0 20px rgba(147, 187, 251, 0.3);
+}
+
+.shadow-glow-lg {
+  box-shadow: 0 0 30px rgba(147, 187, 251, 0.4);
+}
+
+/* Dark mode adjustments for glows */
+.dark .shadow-glow-sm {
+  box-shadow: 0 0 10px rgba(73, 105, 166, 0.35);
+}
+
+.dark .shadow-glow-md {
+  box-shadow: 0 0 20px rgba(73, 105, 166, 0.45);
+}
+
+.dark .shadow-glow-lg {
+  box-shadow: 0 0 30px rgba(73, 105, 166, 0.55);
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(100, 100, 100, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 100, 100, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@layer utilities {
+  .animate-fade {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide {
+    animation: slide 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
