@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { hardhat } from "viem/chains";
 import { Bars3Icon, BugAntIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { BatchStatusIndicators } from "~~/components/BatchStatusIndicators";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useTargetNetwork } from "~~/hooks/scaffold-eth";
 
@@ -100,7 +101,10 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end grow mr-4">
-        <RainbowKitCustomConnectButton />
+        <div className="flex items-center gap-2">
+          <BatchStatusIndicators />
+          <RainbowKitCustomConnectButton />
+        </div>
         {isLocalNetwork && <FaucetButton />}
       </div>
     </div>
