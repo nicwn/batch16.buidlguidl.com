@@ -4023,6 +4023,7 @@ __metadata:
     eslint-config-prettier: ^10.1.1
     eslint-plugin-prettier: ^5.2.4
     kubo-rpc-client: ^5.0.2
+    lucide-react: ^0.510.0
     next: ^15.2.3
     next-nprogress-bar: ^2.3.13
     next-themes: ^0.3.0
@@ -13414,6 +13415,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.510.0":
+  version: 0.510.0
+  resolution: "lucide-react@npm:0.510.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: bc823d2a69255738558fe1ddff18fa9b1f602539928ff4c766a790b190bfc14140061df9cd4fab1680c523053e823668fdc4d726f82f4141f53ee9c58b6916a0
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:^0.513.0":
+  version: 0.513.0
+  resolution: "lucide-react@npm:0.513.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 76eeae8637afc4ac9ac95f92e2ad8a335151834a6a748ca581dc8f2999a0059e6b60257a47cfae6789db5c6ee4c288a4e68410b302f4227bda86d2807a093097
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^3.1.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -16658,6 +16677,7 @@ __metadata:
   dependencies:
     husky: ^9.1.6
     lint-staged: ^15.2.10
+    lucide-react: ^0.513.0
   languageName: unknown
   linkType: soft
 

@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
-import { useTheme } from "next-themes";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { SiBluesky } from "react-icons/si";
 import { Address } from "~~/components/scaffold-eth";
@@ -33,28 +31,10 @@ const socialLinks = [
   },
 ];
 
-const ProfilePage: NextPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
-  const isDarkMode = resolvedTheme === "dark";
-
-  useEffect(() => {
-    setIsVisible(true);
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
+const NicwnProfilePage: NextPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 font-sans">
-      <div
-        className={`w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-md shadow-secondary ${
-          isDarkMode ? "bg-base-100" : "bg-white"
-        } transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"} transition-all duration-700`}
-      >
+      <div className="w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-md shadow-secondary bg-white dark:bg-base-100">
         {/* Header with pattern */}
         <div className="relative">
           <div className="h-36 bg-[#5DA2D5] overflow-hidden relative">
@@ -65,11 +45,11 @@ const ProfilePage: NextPage = () => {
 
           {/* Avatar */}
           <div className="absolute left-0 right-0 -bottom-16 flex justify-center">
-            <div className="p-1 bg-[#F79E02] rounded-full shadow-md shadow-secondary group">
-              <div className="p-1 bg-[#55BAB7] rounded-full overflow-hidden transform transition-all duration-300 group-hover:scale-105">
+            <div className="p-1 bg-[#F79E02] rounded-full shadow-md shadow-secondary">
+              <div className="p-1 bg-[#55BAB7] rounded-full overflow-hidden">
                 <div className="w-32 h-32 relative">
                   <Image
-                    src="/nickavatar.png.avif"
+                    src="/nickavatar.avif"
                     alt="Nicholas Wang"
                     fill
                     sizes="(max-width: 128px) 100vw, 128px"
@@ -92,8 +72,8 @@ const ProfilePage: NextPage = () => {
               </span>
             </div>
             <p className="text-lg mb-6 max-w-xs mx-auto">
-              I am Nick Wang. My claim to fame was the creation LEGO Ideas, I moved from NYC to Tokyo and led a small
-              team to make fan created LEGO sets a reality.
+              I am Nick Wang. My claim to fame was the creation LEGO Ideas, where I moved from NYC to Tokyo and led a
+              small team to make fan created LEGO sets a reality.
             </p>
 
             {/* Address display */}
@@ -139,4 +119,4 @@ const ProfilePage: NextPage = () => {
   );
 };
 
-export default ProfilePage;
+export default NicwnProfilePage;
